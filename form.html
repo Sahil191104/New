@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        /* #Frmename,
+        #Frmeage,
+        #FrmePasword {
+            background-color: rgb(190, 111, 111);
+            color: red;
+        } */
+    </style>
+</head>
+
+<body>
+
+    <form id="rgister" action="#" method="post">
+        <input type="text" name="fname" placeholder="Please enter Your Name" id="name"><br><span
+            id="Frmename"></span><br>
+        <input type="text" name="age" placeholder="Please enter Your age" id="age"><br><span id="Frmeage"></span><br>
+        <input type="password" name="Pasword" placeholder="Please enter Your Pasword" id="Pasword"><br><span
+            id="FrmePasword"></span><br>
+
+        <input type="Submit">
+    </form>
+
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"
+        integrity="sha256-oP6HI9z1XaZNBrJURtCoUT5SUnxFr8s3BzRl+cbzUq8=" crossorigin="anonymous"></script>
+
+    <script>
+        $(document).ready(function () {
+            $("#rgister").submit(function () {
+                var fnamedata = $("#name").val();
+                var fnameage = $("#age").val();
+                var fnamePasword = $("#Pasword").val();
+
+                var regexfanme = /^[a-zA-Z ]{2,30}$/;
+                // var ageNumericVal = +fnameage;
+
+                if (fnamedata == '') {
+                    $("#Frmename").html("Please enter Name");
+                } else {
+                    if (regexfanme.test(fnamedata)) {
+                        $("#Frmename").html("");
+                    } else {
+                        $("#Frmename").html("Please enter Valid input");
+                    }
+                }
+
+                if (fnameage == '') {
+                    $("#Frmeage").html("Please enter age");
+                } else {
+                    // if (ageNumericVal < 0 || ageNumericVal > 200) {
+                    //     $("#Frmeage").html("");
+                    // } else {
+                    //     $("#Frmeage").html("Please enter valid age");
+                    // }
+                    if (isNaN(fnameage)) {
+                        $("#Frmeage").html("Please enter valid age");
+                    } else {
+                        $("#Frmeage").html("");
+                    }
+                }
+
+                if (fnamePasword == '') {
+                    $("#FrmePasword").html("Please enter Pasword");
+                } else {
+                    if (fnamePasword.length > 8) {
+                        $("#FrmePasword").html("");
+                    } else {
+                        $("#FrmePasword").html("Please enter Minimum 8 charcter Pasword");
+                    }
+                }
+
+                return false;
+            })
+        })
+    </script>
+
+</body>
+
+</html>
